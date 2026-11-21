@@ -1,6 +1,39 @@
 @Rest_API_HostAddress = http://localhost:5097
 
-GET {{Rest_API_HostAddress}}/weatherforecast/
-Accept: application/json
+### Registro
+POST {{Rest_API_HostAddress}}/api/Auth/register
+Content-Type: application/json
 
-###
+{
+  "email": "prueba@correo.com",
+  "password": "Prueba123!",
+  "displayName": "Usuario Prueba",
+  "username": "prueba",
+  "phoneNumber": "+50412345678",
+  "birthDate": "2000-01-15T00:00:00Z",
+  "country": "Honduras",
+  "bio": "Futbol, nivel intermedio"
+}
+
+### Login
+POST {{Rest_API_HostAddress}}/api/Auth/login
+Content-Type: application/json
+
+{
+  "email": "prueba@correo.com",
+  "password": "Prueba123!"
+}
+
+### Mi perfil (pegar el idToken)
+GET {{Rest_API_HostAddress}}/api/Miembro
+Authorization: Bearer TU_ID_TOKEN
+
+### Buscar
+POST {{Rest_API_HostAddress}}/api/Miembro/buscar
+Authorization: Bearer TU_ID_TOKEN
+Content-Type: application/json
+
+{
+  "country": "Honduras",
+  "username": "prueba"
+}
